@@ -583,10 +583,7 @@ td[contentEditable]{
 }
 
 .card>.front{
-	background-color:white;
-	background-repeat:no-repeat;
-	background-position:50% 75%;
-	background-size:70px;
+	color:white;
 }
 
 .card>.back{
@@ -602,9 +599,30 @@ td[contentEditable]{
 	transform: rotateY(180deg);
 }
 
-.card.heart, .card.diamond{
-	color:red;
+.card.red{
+	background-color: red;
+	background-repeat:no-repeat;
+	background-position:50% 75%;
+	background-size:70px;
+} 
+.card.blue{
+	background-color: blue;
+	background-repeat:no-repeat;
+	background-position:50% 75%;
+	background-size:70px;
 }
+.card.green{
+	background-color: green;
+	background-repeat:no-repeat;
+	background-position:50% 75%;
+	background-size:70px;
+} 
+.card.yellow{
+	background-color: yellow;
+	background-repeat:no-repeat;
+	background-position:50% 75%;
+	background-size:70px;
+
 
 .card.noShadow .front, .card.noShadow .back{
 	box-shadow:none;
