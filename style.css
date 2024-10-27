@@ -582,9 +582,27 @@ td[contentEditable]{
 	transform-style: preserve-3d;
 }
 
-.card>.front{
-	color:white;
+
+.card>.front {
+    color: white;
 }
+
+.card>.front.red {
+    background-color: red;
+}
+
+.card>.front.blue {
+    background-color: blue;
+}
+
+.card>.front.green {
+    background-color: green;
+}
+
+.card>.front.yellow {
+    background-color: yellow;
+}
+
 
 .card>.back{
 	background-image:url('img/flip.png');
@@ -597,19 +615,6 @@ td[contentEditable]{
 	-ms-transform: rotateY(180deg);
 	-o-transform: rotateY(180deg);
 	transform: rotateY(180deg);
-}
-
-.card>.front.red{
-	background-color: red;
-} 
-.card>.front.blue{
-	background-color: blue;
-}
-.card>.front.green{
-	background-color: green;
-} 
-.card>.front.yellow{
-	background-color: yellow;
 }
 
 .card.noShadow .front, .card.noShadow .back{
