@@ -18,7 +18,7 @@ function(domBinding) {
       14: 0, 
     })[this.value] : this.value;
 
-    this.display = domBinding.createUnoCardDisplay(this.symbol, this.color);
+    this.display = domBinding.createCardDisplay(this.symbol, this.color);
     this.display.onClick = this.shift.bind(this);
   };
 
