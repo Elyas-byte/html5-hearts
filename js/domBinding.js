@@ -1,6 +1,6 @@
 define(function(){
 
-    var suits = ['spade', 'heart', 'club', 'diamond'];
+    var colors = ['red', 'yellow', 'blue', 'green'];
 
     var frag;
 
@@ -129,7 +129,7 @@ define(function(){
         createPlayerDisplay: function(id, name){
             return new PlayerDisplay(id, name);
         },
-        createCardDisplay: function(numtext, suit){
+        createCardDisplay: function(numtext, color){
             if(!frag){
                 frag = document.createDocumentFragment();
             }
@@ -146,7 +146,7 @@ define(function(){
             var front = document.createElement('div');
             front.className = 'front';
             front.appendChild(numText);
-            display.classList.add(suits[suit]);
+            display.classList.add(colors[color]);
 
             var icon = document.createElement('div');
             icon.className = 'icon';

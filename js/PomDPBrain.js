@@ -150,9 +150,9 @@ function(Brain ,  op                    ,  PomDPSimulator){
     PomDPBrain.prototype.getAllActions = function(history){
         var info = history.info;
         if(info.curBoard.length){
-            var suit = cardsInfo[info.curBoard[0] % 100].suit;
+            var color = cardsInfo[info.curBoard[0] % 100].color;
             var r = info.playersInfo[this.ind].hasCards.filter(function(c){
-                return cardsInfo[c].suit === suit;
+                return cardsInfo[c].color === color;
             });
             if(!r.length){
                 return [].concat(info.playersInfo[this.ind].hasCards);
@@ -165,7 +165,7 @@ function(Brain ,  op                    ,  PomDPSimulator){
             return [].concat(info.playersInfo[this.ind].hasCards);
         } else {
             var possible = info.playersInfo[this.ind].hasCards.filter(function(c){
-                return cardsInfo[c].suit !== 1;
+                return cardsInfo[c].color !== 1;
             });
             if(possible.length) return possible;
             else return [].concat(info.playersInfo[this.ind].hasCards);
@@ -198,15 +198,15 @@ function(Brain ,  op                    ,  PomDPSimulator){
             var pid = ((ob / 100) | 0) - 1;
             playersInfo[pid].numCards--;
             this.removeRemainingCard(ob % 100, info);
-            heartBroken = heartBroken || (cardsInfo[ob % 100].suit === 1);
+            heartBroken = heartBroken || (cardsInfo[ob % 100].color === 1);
             var curSuit;
             if(curBoard.length){
-                curSuit = cardsInfo[curBoard[0] % 100].suit;
+                curSuit = cardsInfo[curBoard[0] % 100].color;
                 if(curSuit){
-                    if(curSuit !== cardsInfo[ob % 100].suit){
+                    if(curSuit !== cardsInfo[ob % 100].color){
                         var lackCardPlayer = playersInfo[pid];
                         remainingCards.forEach(function(c){
-                            if(cardsInfo[c].suit === curSuit){
+                            if(cardsInfo[c].color === curSuit){
                                 lackCardPlayer.lackCard[c] = true;
                                 cardLackCount[c]++;
                             }
@@ -219,12 +219,12 @@ function(Brain ,  op                    ,  PomDPSimulator){
                 var maxNum = -1, maxPlayer = 0, boardScore = 0;
                 for(var i = 0; i < 4; i++){
                     var bcard = cardsInfo[curBoard[i] % 100];
-                    if(bcard.suit === curSuit && bcard.num > maxNum){
+                    if(bcard.color === curSuit && bcard.num > maxNum){
                         maxPlayer = ((curBoard[i] / 100) | 0) - 1;
                         maxNum = bcard.num;
                     }
-                    if(bcard.suit === 1) boardScore++;
-                    else if(bcard.suit === 0 && bcard.num === 11) boardScore += 13;
+                    if(bcard.color === 1) boardScore++;
+                    else if(bcard.color === 0 && bcard.num === 11) boardScore += 13;
                 }
                 playersInfo[maxPlayer].score += boardScore;
                 curBoard.length = 0;

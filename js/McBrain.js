@@ -86,12 +86,12 @@ function( Simulator ,  Brain,   op){
         }else{
             this.playersInfo[info.player].numCards--;
             this.removeRemainingCard(info.card);
-            if(cardsInfo[info.card].suit === 1) this.heartBroken = true;
+            if(cardsInfo[info.card].color === 1) this.heartBroken = true;
             var markLackCard = this.markLackCard.bind(this),
                 lackCardPlayer = this.playersInfo[info.player];
-            if(info.curSuit !== cardsInfo[info.card].suit){
+            if(info.curSuit !== cardsInfo[info.card].color){
                 this.remainingCards.forEach(function(c){
-                    if(cardsInfo[c].suit === info.curSuit){
+                    if(cardsInfo[c].color === info.curSuit){
                         markLackCard(c, lackCardPlayer);
                     }
                 });

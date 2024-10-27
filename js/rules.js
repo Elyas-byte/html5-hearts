@@ -8,14 +8,14 @@ define(function(){
                     return cards;
                 }else if(cards.length === 13){
                     for(var i = 0; i < cards.length; i++){
-                        if(cards[i].suit == 2 && cards[i].num == 1){
+                        if(cards[i].color == 2 && cards[i].num == 1){
                             return [cards[i]];
                         }
                     }
                     return null;
                 }else{
                     var vcards = cards.filter(function(c){
-                        return c.suit !== 1;
+                        return c.color !== 1;
                     });
                     if(vcards.length === 0){
                         return vcards.concat(cards);
@@ -25,7 +25,7 @@ define(function(){
                 }
             }else{
                 var vcards = cards.filter(function(c){
-                    return c.suit === firstSuit;
+                    return c.color === firstSuit;
                 });
                 if(vcards.length === 0){
                     return vcards.concat(cards);

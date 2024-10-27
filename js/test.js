@@ -28,7 +28,7 @@
                         players.map(function(p){ return p.id; }).join(", ") +
                         "] cards [" +
                         cards.map(function(c){
-                            return "{" + (c.num + 1) + ", " + (Card.suits[c.suit]) + "}";
+                            return "{" + (c.num + 1) + ", " + (Card.colors[c.color]) + "}";
                         }).join(", ");
 
             // console.log(text + "<br>");

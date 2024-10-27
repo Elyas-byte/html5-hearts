@@ -90,7 +90,7 @@ function(Card,  $,         layout){
             score: function(){
                 var max = 0;
                 for(var i = 1; i < 4; i++){
-                    if(this.cards[i].suit === this.cards[max].suit && (this.cards[i].num > this.cards[max].num)){
+                    if(this.cards[i].color === this.cards[max].color && (this.cards[i].num > this.cards[max].num)){
                         max = i;
                     }
                 }

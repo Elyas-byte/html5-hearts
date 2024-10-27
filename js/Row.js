@@ -54,7 +54,7 @@ function(layout){
 
     Row.prototype.sort = function(){
         this.cards.sort(function(a, b){
-            if(a.suit != b.suit) return b.suit - a.suit;
+            if(a.color != b.color) return b.color - a.color;
             return a.num - b.num;
         }).forEach(function(v, ind){
             v.ind = ind;

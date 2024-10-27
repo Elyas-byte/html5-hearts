@@ -26,16 +26,16 @@ function(op){
             maxNum = 0;
 
         if(this.state.board.length === 4){
-            curSuit = cardsInfo[board[0] % 100].suit;
+            curSuit = cardsInfo[board[0] % 100].color;
             for(var i = 0; i < 4; i++){
                 var player = ((board[i] / 100) | 0) - 1,
                     c = cardsInfo[board[i] % 100];
-                if(c.suit === 1){
+                if(c.color === 1){
                     boardScore += 1;
-                } else if (c.num === 11 && c.suit === 0){
+                } else if (c.num === 11 && c.color === 0){
                     boardScore += 13;
                 }
-                if(c.suit === curSuit && c.num > maxNum) {
+                if(c.color === curSuit && c.num > maxNum) {
                     maxNum = c.num;
                     maxPlayer = player;
                 }
@@ -58,15 +58,15 @@ function(op){
                 [].push.apply(this.tmpVc, cards);
             } else {
                 cards.forEach(function(c){
-                    if(cardsInfo[c].suit !== 1){
+                    if(cardsInfo[c].color !== 1){
                         vc.push(c);
                     }
                 });
             }
         } else {
-            var suit = cardsInfo[this.state.board[0] % 100].suit;
+            var color = cardsInfo[this.state.board[0] % 100].color;
             cards.forEach(function(c){
-                if(cardsInfo[c].suit === suit){
+                if(cardsInfo[c].color === color){
                     vc.push(c);
                 }
             });
@@ -83,14 +83,14 @@ function(op){
         if(!cards.length) return null;
         var vc = this._getValidCards(cards),
             len = vc.length,
-            suit = -1, maxNum = -1,
+            color = -1, maxNum = -1,
             board = this.state.board;
 
         if(board.length){
-            suit = cardsInfo[board[0] % 100].suit;
+            color = cardsInfo[board[0] % 100].color;
             maxNum = board.reduce(function(prev, curc){
                 var cur = cardsInfo[curc % 100];
-                if(cur.suit === suit && cur.num > prev){
+                if(cur.color === color && cur.num > prev){
                     return cur.num;
                 }else{
                     return prev;
@@ -99,8 +99,8 @@ function(op){
             return vc.reduce(function(prevc, curc){
                 var cur = cardsInfo[curc],
                     prev = cardsInfo[prevc];
-                if(prev.suit === cur.suit){
-                    if(cur.suit === suit){
+                if(prev.color === cur.color){
+                    if(cur.color === color){
                         if(cur.num < maxNum){
                             if(prev.num > maxNum || prev.num < cur.num) return curc;
                             else return prevc;
@@ -117,10 +117,10 @@ function(op){
                         else return prevc;
                     }
                 }else{
-                    if(cur.suit === 0 && cur.num === 11) return curc;
-                    if(prev.suit === 0 && prev.num === 11) return prevc;
-                    if(cur.suit === 1) return curc;
-                    if(prev.suit === 1) return prevc;
+                    if(cur.color === 0 && cur.num === 11) return curc;
+                    if(prev.color === 0 && prev.num === 11) return prevc;
+                    if(cur.color === 1) return curc;
+                    if(prev.color === 1) return prevc;
                     if(cur.num > prev.num) return curc;
                     return prevc;
                 }

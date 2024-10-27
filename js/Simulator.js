@@ -53,7 +53,7 @@ function(op){
         this.curPlayers.push(player);
         this.curBoard.push(card);
 
-        if(cardsInfo[card].suit === 1){
+        if(cardsInfo[card].color === 1){
             this.heartBroken = true;
         }
 
@@ -68,15 +68,15 @@ function(op){
                 [].push.apply(this.tmpVc, cards);
             } else {
                 cards.forEach(function(c){
-                    if(cardsInfo[c].suit !== 1){
+                    if(cardsInfo[c].color !== 1){
                         vc.push(c);
                     }
                 });
             }
         } else {
-            var suit = cardsInfo[this.curBoard[0]].suit;
+            var color = cardsInfo[this.curBoard[0]].color;
             cards.forEach(function(c){
-                if(cardsInfo[c].suit === suit){
+                if(cardsInfo[c].color === color){
                     vc.push(c);
                 }
             });
@@ -125,7 +125,7 @@ function(op){
                 throw "what!";
             }
         }
-        var curSuit = cardsInfo[this.curBoard[0]].suit,
+        var curSuit = cardsInfo[this.curBoard[0]].color,
             maxCard = 0,
             maxNum = cardsInfo[this.curBoard[0]].num,
             i,
@@ -133,13 +133,13 @@ function(op){
 
         for(i = 0; i < 4; i++){
             var c = cardsInfo[this.curBoard[i]];
-            if(c.suit === curSuit && c.num > maxNum){
+            if(c.color === curSuit && c.num > maxNum){
                 maxNum = c.num;
                 maxCard = i;
             }
 
-            if(c.suit === 1) score += 1;
-            if(c.suit === 0 && c.num === 11) score += 13;
+            if(c.color === 1) score += 1;
+            if(c.color === 0 && c.num === 11) score += 13;
         }
 
         this.scores[this.curPlayers[maxCard]] += score;
@@ -152,15 +152,15 @@ function(op){
     Simulator.prototype._othersDecide = function(cards){
         var vc = this._getValidCards(cards),
             len = vc.length,
-            suit = -1, maxNum = -1,
+            color = -1, maxNum = -1,
             board = this.curBoard;
         // return vc[Math.floor(vc.length * Math.random())];
 
         if(board.length){
-            suit = cardsInfo[board[0]].suit;
+            color = cardsInfo[board[0]].color;
             maxNum = board.reduce(function(prev, curc){
                 var cur = cardsInfo[curc];
-                if(cur.suit === suit && cur.num > prev){
+                if(cur.color === color && cur.num > prev){
                     return cur.num;
                 }else{
                     return prev;
@@ -169,8 +169,8 @@ function(op){
             return vc.reduce(function(prevc, curc){
                 var cur = cardsInfo[curc],
                     prev = cardsInfo[prevc];
-                if(prev.suit === cur.suit){
-                    if(cur.suit === suit){
+                if(prev.color === cur.color){
+                    if(cur.color === color){
                         if(cur.num < maxNum){
                             if(prev.num > maxNum || prev.num < cur.num) return curc;
                             else return prevc;
@@ -187,10 +187,10 @@ function(op){
                         else return prevc;
                     }
                 }else{
-                    if(cur.suit === 0 && cur.num === 11) return curc;
-                    if(prev.suit === 0 && prev.num === 11) return prevc;
-                    if(cur.suit === 1) return curc;
-                    if(prev.suit === 1) return prevc;
+                    if(cur.color === 0 && cur.num === 11) return curc;
+                    if(prev.color === 0 && prev.num === 11) return prevc;
+                    if(cur.color === 1) return curc;
+                    if(prev.color === 1) return prevc;
                     if(cur.num > prev.num) return curc;
                     return prevc;
                 }

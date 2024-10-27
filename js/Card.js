@@ -22,7 +22,6 @@ function(domBinding) {
     this.display.onClick = this.shift.bind(this);
   };
 
-  // No need for separate Card.suits
 
   Card.prototype.adjustPos = function(noUpdate) {
     if (!noUpdate) this.pos = this.parent.getPosFor(this.ind);

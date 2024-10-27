@@ -6,13 +6,13 @@ define(function(){
     for(var i = 0; i < 52; i++){
         cardsInfo.push({
             num: i % 13 + 1,
-            suit: i % 4
+            color: i % 4
         });
     }
 
-    function infoToCardId(num, suit){
+    function infoToCardId(num, color){
         var r = num - 1;
-        while(r % 4 !== suit){
+        while(r % 4 !== color){
             r += 13;
         }
         return r;
