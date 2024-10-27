@@ -1,6 +1,6 @@
 define(function(){
 
-    var suits = ['spade', 'heart', 'club', 'diamond'];
+    var suits =  ['red', 'yellow', 'blue', 'green'];
 
     var frag;
 
