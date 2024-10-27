@@ -53,7 +53,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
     };
 
     var informCardOut = function(player, card){
-        if(card.suit === 1){
+        if(card.color === 1){
             heartBroken = true;
         }
         players.forEach(function(p){
@@ -61,7 +61,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
                 type: "out",
                 player: player,
                 card: card,
-                curSuit: board.desk.cards[0].suit
+                curSuit: board.desk.cards[0].color
             });
         });
     };
@@ -172,7 +172,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
                     players[currentPlay].setActive(true);
                     $.when(players[currentPlay].decide(
                         rules.getValidCards(players[currentPlay].row.cards,
-                                            board.desk.cards[0] ? board.desk.cards[0].suit : -1,
+                                            board.desk.cards[0] ? board.desk.cards[0].color : -1,
                                             heartBroken),
                         board.desk.cards,
                         board.desk.players,
