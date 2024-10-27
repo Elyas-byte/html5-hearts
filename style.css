@@ -599,30 +599,18 @@ td[contentEditable]{
 	transform: rotateY(180deg);
 }
 
-.card.red{
+.card>.front.red{
 	background-color: red;
-	background-repeat:no-repeat;
-	background-position:50% 75%;
-	background-size:70px;
 } 
-.card.blue{
+.card>.front.blue{
 	background-color: blue;
-	background-repeat:no-repeat;
-	background-position:50% 75%;
-	background-size:70px;
 }
-.card.green{
+.card>.front.green{
 	background-color: green;
-	background-repeat:no-repeat;
-	background-position:50% 75%;
-	background-size:70px;
 } 
-.card.yellow{
+.card>.front.yellow{
 	background-color: yellow;
-	background-repeat:no-repeat;
-	background-position:50% 75%;
-	background-size:70px;
-
+}
 
 .card.noShadow .front, .card.noShadow .back{
 	box-shadow:none;
